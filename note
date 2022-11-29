@@ -1,0 +1,177 @@
+1. fire base.
+-login, 
+- klik add project
+- ketikan nama projectnya "login react firebase"
+- klik ceklis dan klik continue
+- pada google analytics for this project kita masukan dulu 
+- klik Create project
+- maka akan muncul "Your new project is ready"
+- klik Continue
+- maka kita akan ditampilkan dashbord dari tampilan dari project kita
+
+2. pada halamn project "login react firebase"
+-karena kita akan fokus ke authentication untuk membuat aplikasi sistem login dengan firebase dan akun google
+- klik menu build kemudian klik authentication.
+- pada halaman authentication klik "get started"
+- pada akan tampil page authencation yang terdapat halamn "user / tempat menyimpan data user kita yang melakukan login", "sign-in mehtod / metode login", "templates / tempalate untuk balesan email atau SMS" kita akan pilih pada halaman sign-in method ini kita memilih/mengaktifkan metode login dengan "email/password dan login dengan akun google"
+
+3 pada halaman sign-in method
+- klik email/password
+- kemudian centang enable (bagian atas saja yang bawah tidak usah)
+- klik "save"
+- maka akan tampil sign-in provders yang sudah kita aktifkan, yaitu email/password, kemudian kita tambah lagi metode loginnya dengan klik "Add New provider"
+- klik "google" (karena kita akan aktifkan login dengan akun google)
+- klik "enable"
+- kemudian pada "Project support email" kita pilih alamat email kita.
+- klik "save"
+- maka akan tampil pada halaman sign-in providers, kita sudah memiliki 2 provider yaitu metode login dengan email/password dan akun google.
+
+4. kemudian pada halaman "Authenticatioan" kita ke halaman "setting"
+-klik settings (pada pengaturan settings sudah tidak ada yang diatur lagi)
+
+5. klik "setting/simbol roda gerigi" yang berada di sampinag project overview
+- klik "project settings"
+- pada halaman project settings - pada halaman general, disini terdapat notifikasi pada halaman paling bawah "There are no apps in your project / belum ada aplikasinya"karena kita berupa webs,
+-  maka klik simbol "</>"
+- maka akan tampil halaman "Add a web app"
+- disini kita kasih nama webnya atau aplikasinya
+- ketikan "react firebase"
+- untuk "Firebase Hosting" jangan di centang karena tidak perlu.
+- klik "Register app"
+
+6. maka akan tampil ADD Firebase SDK
+- adalah script yang kita gunakan untuk konfigurasi firebase ke project aplikasi kita, kita bisa menggunakan "NPM / use npm" dan juga "script/ use a <script> tag"
+tinggal kita pilih saja konfigurasi mana yang ingin kita gunakan.
+- scriptini akan dapat kita buka kembali dsaat ingin kita gunakan,
+- sekrang ke konsol klik "continue to console"
+- maka kita kembali ke halaman "Project settings"
+
+7.sampe disini kita masuk ke kodingan kita.
+
+8.  pada terminal cek node, npm nya sudah terinstal belum di komputer kita
+- ketikan pada terminal "npm create vite"
+- ketikan nama project kita "react_js_firebase" enter
+- pilih framworknya "React" enter
+- pilih "Javascript" enter
+- maka project kita sudah berhasil dibuat, maka difolder kita sudah berhasil dibuat sebuah folder dengan nama "react_js_firebase"
+
+9.masuk ke folder project kita/ folder "react_js_firebase"
+- ketikan pada terminal >> cd react_js_firebase
+- dalam folder react_js_firebase, kita dapat install beberap package yang kita butuhkan.
+- pada terminal jalan kan 
+- >> npm install (karena belum ada node modulesnya, dengan seperti ini akan menginstall package yang sudah dilist sama vite js yang ada didalam package.json) enter
+- >> npm install react-router-dom (untuk perpindahan page didalam react) enter
+- >> npm run dev (untuk menjalan aplikasi di terminal) enter
+
+10. install tailwind css pada project react kita
+-  buka browser dan ketika tailwind css (https://tailwindcss.com/)
+
+- pada halaman web tailwind klik "get started"
+-  pada installation, pilih "framework Guides", kemudian klik "vite JS"
+- pada halaman "using React", kita lewati langkah 1 (create your project), karena kita sudah melakukannya
+
+# tahap 2 (install tailwind css) copy kode pada langkah kedua dan paste diterminal
+- pada terminal ketikan dibawah ini
+- >> npm install -D tailwindcss postcss autoprefixer
+- >> npx tailwindcss init -p
+
+# tahap 3 (kita ganti semua kode yang ada pada file "tailwind.config.cjs", kemudian copy semua kode yang ada pada tahap 3 ini ke dalam file tailwind.config.cjs, berikut kodenya
+- >>
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+->>
+
+# tahap 4 (Add the Tailwind directives to your CSS/ kita copy juga dan kita ganti ke file index.css yang ada di project kita ("./src/index.css"))
+- semua isi kodingan yang ada di dalam file index.css semuanya kita hapus dan ganti dengan kode pada tahap 4 ini.
+klik copy kodenya dan paste di index.css
+- >>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+- >>
+
+11. konfigurasi atau penghapusan file yang suda dibuat oleh vite/react js.
+- hapus file App.css folder "./src/App.css"
+- pada file App.jsx di dalam folder src, kita hapus semua kodinganya.
+- disini kita buat komponen App dan kode rfc kemudian enter
+- >> rfc (singkatan untuk membuat komponen, jika sudah menginstall es7 react)
+- maka akan tampil kodingan seperti dibawah ini untuk file App.jsx
+
+- >>
+import React from 'react'
+
+export default function App() {
+  return (
+    <div>App</div>
+  )
+}
+
+- >>
+
+
+12. kemudian kita ke file "main.jsx"
+- kita import react router dom
+->> import {BrowserRouter } from "react-router-dom"
+dan bungkus <App /> dengan tag <BrowserRouter> </BrowserR
+# sehingga kodingan pada file main.jsx menjadi seperti dibawah ini
+->>
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+import {BrowserRouter } from "react-router-dom"
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <BrowserRouter>
+    <App />
+    </BrowserRouter>
+  </React.StrictMode>
+)
+
+->>
+
+13. kemudian pada halaman App.jsx,
+kita tambahkan/import routes dan route,
+contoh kode dibawah ini
+->>
+
+import React from 'react'
+import {Routes, Route} from "react-router-dom"
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={ <h1>Login Page </h1> } />
+      <Route path="/register" element={ <h1>Register Page </h1> } />
+      <Route path="/dashbord" element={<h1>Dashbord Page </h1>} />
+    </Routes>
+  )
+}
+
+- >>
+
+NOTE : 
+ <Route path="/" element={ <h1>Login Page </h1> } />
+"element={ <h1>Login Page </h1>" NANTINYA AKAN DIGANTI DENGAN component page login sehingga menjadi element={ <Login />} dan importnya url foldernya (import Login from "./pages/Login")
+
+14. selanjutnya kita jalan terminal, untuk menjalan aplikasi kita untuk mengetes settingan kita sudah berjalan atau tidak ketikan 
+->> npm run dev
+- dan buka pada halaman browser kita ke link http://localhost:5173/
+- maka tampil text "Login page" sesuai dengan route "/" yang merupakan element / halaman login page
+
+15. ISTIRAHAT DURASI VIDEO 28:19
+
+
