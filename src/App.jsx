@@ -50,10 +50,27 @@ export default function App ()
 
   
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-    </Routes>
+    // membuat logik apakah user sudah login atau belum dengan kondisional rendering
+    // jika isLogin bernilai true maka jalankan fungsi didalam ini "()" : jika tidak atau bernilai false maka jalankan fungsi yang ada didalam ini "()"
+    <>
+      { isLogin ? (
+        // kondisi jika sudah login / "true" hanya boleh akses page dashboard
+      <Routes>
+          <Route path="/dashboard" element={ <Dashboard /> } />
+         
+          {/* path="*" maksudnya apa pun yang url yang dimasukan oleh user, maka akan menampilkan halaman dashboard */ }
+          <Route path="*" element={ <Dashboard /> } />
+      </Routes>
+      ) : (
+          // jika belum login, maka arahkan user ke halmaan login dan tidak boleh mengkases halaman dashboard atau bernilai "false"
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={ <Register /> } />
+            
+        {/* path="*" apa pun yang dimasukan user di url, maka akan menampilkan page register, karena belum login/register */}
+        <Route path="*" element={ <Register /> } />
+      </Routes>
+    )}
+    </>
   )
 }
