@@ -172,6 +172,108 @@ NOTE :
 - dan buka pada halaman browser kita ke link http://localhost:5173/
 - maka tampil text "Login page" sesuai dengan route "/" yang merupakan element / halaman login page
 
-15. ISTIRAHAT DURASI VIDEO 28:19
+15. setelah sudah berhasil membuat seluruh page yang dibutuhkan (page login, register dan dashboard), kita akan lanjutkan untuk konfigurasi firebase ke project/aplikasi react kita
 
+- stop server/terminal kita "control + c"
 
+# INSTALASI FIREBASE
+- diterminal didalam folder project kita
+- >> npm install firebase
+- setelah instalasi berhasil, maka kita dapat masuk ke dashboard firebase kita atau firebase console,
+
+# - klik project kita "login react firebase"
+ 
+ - disamping Project Overview klik icon roda gerigi/pengaturan, kemudian klik "project settings"
+
+ - maka akan tampil halaman project settings dan pada halaman "general" akan tampil kode konfigurasi di halaman paling bawah "web apps" dan "SDK setup and configuration", kita dapat memilih konfigurasi via "npm", "CDN" dan "Config"
+
+ # kita pilih yang "NPM"
+ - kemudian karena kita sudah menjalankan >> npm install firebase, maka kita selanjutnya copy kode yang banyak dibawahnya dengan klik icon copy.
+
+ contoh kodingannya
+
+-- >>
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDodDPzZDZG1HNEPqTlOkZjkNigi_1HDv4",
+    authDomain: "login-react-firebase-2481e.firebaseapp.com",
+    projectId: "login-react-firebase-2481e",
+    storageBucket: "login-react-firebase-2481e.appspot.com",
+    messagingSenderId: "428468199233",
+    appId: "1:428468199233:web:9891e66abadda657e54bc0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+-->>
+
+# pada folder src, kita tambahkan file dengan nama "firebae.js"
+- pada file firebase.js, kita paste kodingan konfigurasi firebase tersebut
+->>
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDodDPzZDZG1HNEPqTlOkZjkNigi_1HDv4",
+    authDomain: "login-react-firebase-2481e.firebaseapp.com",
+    projectId: "login-react-firebase-2481e",
+    storageBucket: "login-react-firebase-2481e.appspot.com",
+    messagingSenderId: "428468199233",
+    appId: "1:428468199233:web:9891e66abadda657e54bc0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+->>
+
+# kemudian import getAuth dan export auth
+
+-->>
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+
+// tambahkan getauth
+import { getAuth } from "firebase/auth"
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDodDPzZDZG1HNEPqTlOkZjkNigi_1HDv4",
+    authDomain: "login-react-firebase-2481e.firebaseapp.com",
+    projectId: "login-react-firebase-2481e",
+    storageBucket: "login-react-firebase-2481e.appspot.com",
+    messagingSenderId: "428468199233",
+    appId: "1:428468199233:web:9891e66abadda657e54bc0"
+  };
+
+  // Initialize Firebase
+const app = initializeApp( firebaseConfig );
+// export auth
+export const auth = getAuth( app );
+-->>
+
+# setelah itu kita masuk ke file App.jsx
+- kita import auth from firebase
+->> import {auth} from "./firebase"
+
+# kita tes settingan kita dengan menggunakan useEffect
+- pada file App.jsx
+
+-->>
+import React, {useEffect} from 'react'
+
+export default function App ()
+{
+
+>>  
+  useEffect( () =>
+  {
+  console.info(auth)
+},[])
+>>
+
+-->>
+# break 01:34, masih eror pada tes koneksi firebase ke project kita 
